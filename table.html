@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Command Reference for React App Deployment on Kubernetes with Docker and Minikube</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7fc;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #215f58;
+            color: #ffffff;
+            padding: 20px;
+            text-align: center;
+        }
+        h1 {
+            font-size: 2.5em;
+            margin: 0;
+        }
+        .container {
+            width: 90%;
+            margin: 20px auto;
+            padding: 10px;
+            background-color: #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+        th {
+            background-color: #215f58;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        tr:hover {
+            background-color: #e0f7fa;
+        }
+        footer {
+            background-color: #215f58;
+            color: #ffffff;
+            padding: 10px;
+            text-align: center;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Command Reference for React App Deployment on Kubernetes with Docker and Minikube</h1>
+</header>
+
+<div class="container">
+    <table>
+        <thead>
+            <tr>
+                <th>Command</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>git clone https://github.com/Deepak-Dev24/react.git</td>
+                <td>Clones the react repository from GitHub to your local machine.</td>
+            </tr>
+            <tr>
+                <td>cd react</td>
+                <td>Navigates to the react project directory.</td>
+            </tr>
+            <tr>
+                <td>npm start</td>
+                <td>Starts the React development server.</td>
+            </tr>
+            <tr>
+                <td>npm install</td>
+                <td>Installs the required dependencies for the React project.</td>
+            </tr>
+            <tr>
+                <td>npm start</td>
+                <td>Starts the React development server (again after installing dependencies).</td>
+            </tr>
+            <tr>
+                <td>docker login</td>
+                <td>Logs into Docker Hub using your credentials.</td>
+            </tr>
+            <tr>
+                <td>docker info</td>
+                <td>Displays detailed information about your Docker installation and configuration.</td>
+            </tr>
+            <tr>
+                <td>docker build -t deepak2633/new-react-app:v1 .</td>
+                <td>Builds a Docker image for the React app and tags it as deepak2633/new-react-app:v1.</td>
+            </tr>
+            <tr>
+                <td>docker images</td>
+                <td>Lists all available Docker images on your system.</td>
+            </tr>
+            <tr>
+                <td>docker push deepak2633/new-react-app:v1 .</td>
+                <td>Pushed the new-react-app:v1 Docker image to Docker Hub.</td>
+            </tr>
+            <tr>
+                <td>docker push deepak2633/new-react-app:v1</td>
+                <td>(Repeated) Pushes the new-react-app:v1 Docker image to Docker Hub.</td>
+            </tr>
+            <tr>
+                <td>minikube status</td>
+                <td>Checks the status of the Minikube cluster.</td>
+            </tr>
+            <tr>
+                <td>minikube start</td>
+                <td>Starts the Minikube virtual machine.</td>
+            </tr>
+            <tr>
+                <td>kubectl create deployment mynew-app --image=deepak2633/webapp-demo:01</td>
+                <td>Creates a new deployment using the webapp-demo:01 Docker image.</td>
+            </tr>
+            <tr>
+                <td>kubectl create deployment mywebapp --image=deepak2633/webapp-demo:01</td>
+                <td>Creates a deployment named mywebapp using the webapp-demo:01 Docker image.</td>
+            </tr>
+            <tr>
+                <td>kubectl get deployment</td>
+                <td>Lists all deployments in the Kubernetes cluster.</td>
+            </tr>
+            <tr>
+                <td>kubectl get pods</td>
+                <td>Lists all pods running in the cluster.</td>
+            </tr>
+            <tr>
+                <td>kubectl describe pod mynew-app-67bdbc8f69-mpzhs</td>
+                <td>Provides detailed information about a specific pod to help with debugging.</td>
+            </tr>
+            <tr>
+                <td>minikube dashboard</td>
+                <td>Launches the Minikube Dashboard for visual management of your Kubernetes resources.</td>
+            </tr>
+            <tr>
+                <td>minikube dashboard --url</td>
+                <td>Provides the URL to access the Minikube dashboard in a browser.</td>
+            </tr>
+            <tr>
+                <td>kubectl logs mywebapp-5d469d79d6-p8dsg</td>
+                <td>Retrieves logs from the specified pod (mywebapp pod).</td>
+            </tr>
+            <tr>
+                <td>kubectl expose deployment mywebapp --type=NodePort --port=3000</td>
+                <td>Exposes the mywebapp deployment to be accessible externally on port 3000 via NodePort.</td>
+            </tr>
+            <tr>
+                <td>kubectl delete svc my-pod-service</td>
+                <td>Deletes a service named my-pod-service from the Kubernetes cluster.</td>
+            </tr>
+            <tr>
+                <td>kubectl expose pod &lt;pod-name&gt; --type=NodePort --port=80 --target-port=8080 --name=my-pod-service</td>
+                <td>Exposes a specific pod to be accessible externally through a NodePort with specified port mappings.</td>
+            </tr>
+            <tr>
+                <td>kubectl set image deployment mywebapp webapp-demo=deepak2633/webapp-demo:06</td>
+                <td>Updates the mywebapp deployment to use the webapp-demo:06 Docker image.</td>
+            </tr>
+            <tr>
+                <td>kubectl create deployment my-react-app --image=deepak2633/new-react-app:v1</td>
+                <td>Creates a deployment for your React app using the new-react-app:v1 Docker image.</td>
+            </tr>
+            <tr>
+                <td>kubectl expose deployment my-react-app --type=NodePort --port=80 --target-port=3000</td>
+                <td>Exposes the React app (my-react-app) on port 80 externally, with the internal target port 3000.</td>
+            </tr>
+            <tr>
+                <td>kubectl get services</td>
+                <td>Lists all services in the cluster, including NodePort services.</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<footer>
+    <p>&copy; 2025 Deepak-Dev24. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
